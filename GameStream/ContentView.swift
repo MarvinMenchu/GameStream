@@ -30,7 +30,7 @@ struct ContentView: View {
 
 struct InicioYRegistroView: View {
     
-    @State var tipoInicioSesion: Bool = false
+    @State var tipoInicioSesion: Bool = true
     
     var body: some View {
         
@@ -176,11 +176,11 @@ struct RegistroView: View {
                 
             }
             
-            VStack (alignment: .leading) {
+            VStack {
                 
                 VStack (alignment: .leading){
                     
-                    Text("Correo electrónico*").foregroundColor(Color("Dark-cian"))
+                    Text("Correo electrónico*").foregroundColor(Color("Dark-cian")).frame(width: 300, alignment: .leading)
                     ZStack (alignment: .leading) {
                         
                         if correo.isEmpty {
