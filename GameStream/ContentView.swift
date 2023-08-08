@@ -10,17 +10,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        ZStack {
-            Spacer()
-            //Color(.blue).ignoresSafeArea()
-            Color(red: 21/255, green: 30/255, blue: 52/255).ignoresSafeArea()
-            
-            VStack {
-                Image("applogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 60)
-                InicioYRegistroView()
+        NavigationView {
+            ZStack {
+                Spacer()
+                //Color(.blue).ignoresSafeArea()
+                Color(red: 21/255, green: 30/255, blue: 52/255).ignoresSafeArea()
+                
+                VStack {
+                    Image("applogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 60)
+                    InicioYRegistroView()
+                }.navigationBarHidden(true)
+                
+                
             }
-            
-            
         }
         
         
@@ -73,6 +75,7 @@ struct InicioSesionView: View {
     @State var correo : String = ""
     @State var contrasena : String = ""
     @State var isContrasenaInvisible: Bool = false
+    @State var isPantallaActive: Bool = false
     
     var body: some View {
         ScrollView  {
@@ -134,13 +137,22 @@ struct InicioSesionView: View {
                 }
                 
             }.padding(.horizontal, 77.0)
+            
+            NavigationLink(destination: Home(), isActive: $isPantallaActive, label: {
+                EmptyView()
+            })
+            
+            
         }
+    }
+    
+    func iniciarSesion() {
+        print("Estoy iniciando boton")
+        isPantallaActive = true
     }
 }
 
-func iniciarSesion() {
-    print("Estoy iniciando boton")
-}
+
 
 struct RegistroView: View {
     
